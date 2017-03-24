@@ -23,7 +23,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('default', ['css', 'fonts'], function() {
-  gulp.watch(config.bootstrapDir + '/assets/stylesheets/**.scss', function(){
+  gulp.watch([config.bootstrapDir + '/assets/stylesheets/**.scss', config.publicDir + '/dev/stylesheets/*.scss'], function(){
     gulp.run('css');
   })
 });
