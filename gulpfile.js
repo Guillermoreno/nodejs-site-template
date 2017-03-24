@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var cssmin = require('gulp-cssmin');
+var rename = require('gulp-rename');
 
 var config = {
   bootstrapDir: './node_modules/bootstrap-sass',
@@ -14,7 +16,11 @@ gulp.task('css', function() {
           // config.publicDir + '/dev/fonts/scss'
         ],
     }))
-    .pipe(gulp.dest(config.publicDir + '/stylesheets'));
+    .pipe(cssmin())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest(config.publicDir + '/stylesheets'))
 });
 
 gulp.task('fonts', function() {
