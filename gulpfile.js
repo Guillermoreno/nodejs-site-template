@@ -22,4 +22,8 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest(config.publicDir + '/fonts'));
 });
 
-gulp.task('default', ['css', 'fonts']);
+gulp.task('default', ['css', 'fonts'], function() {
+  gulp.watch(config.bootstrapDir + '/assets/stylesheets/**.scss', function(){
+    gulp.run('css');
+  })
+});
